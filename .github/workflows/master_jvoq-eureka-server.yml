@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://jvoqcontainerregistry.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_6c504c0943a84d409aa354765d1a943b }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_53c74527a84c4c0397ce8656162cef0d }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_1b08760943644a28a162a81d3197b6a3 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_b45ac745d0ca4e5487c8a743c3348aa9 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: jvoqcontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_6c504c0943a84d409aa354765d1a943b }}/servicio-eureka-server:${{ github.sha }}
+        tags: jvoqcontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1b08760943644a28a162a81d3197b6a3 }}/servicio-eureka-server:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'jvoq-eureka-server'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d0d17982290c492da870f3ae8ab5e06e }}
-        images: 'jvoqcontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_6c504c0943a84d409aa354765d1a943b }}/servicio-eureka-server:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_bef630dd6d104331a1c5da42344838f7 }}
+        images: 'jvoqcontainerregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_1b08760943644a28a162a81d3197b6a3 }}/servicio-eureka-server:${{ github.sha }}'
